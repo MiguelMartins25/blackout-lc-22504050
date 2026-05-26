@@ -63,6 +63,7 @@ namespace Blackout
             Controller controller = new Controller();
 
             var (rows, columns) = controller.GridBuilder();
+            
             AnsiConsole.Status()
                 .Spinner(Spinner.Known.Dots)
                 .Start("Processing...", ctx =>
