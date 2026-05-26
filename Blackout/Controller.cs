@@ -11,22 +11,22 @@ namespace Blackout
         readonly View view = new View();
         public (int, int) GridBuilder()
         {
-            if (view.ReturnChoice() == "[green]Easy[/]")
+            if (view.DifficultySelect() == "[green]Easy[/]")
             {
                 return (3, 3); 
             }
 
-            else if (view.ReturnChoice() == "[yellow]Medium[/]")
+            else if (view.DifficultySelect() == "[yellow]Medium[/]")
             {
                 return (5, 5);
             }
 
-            else if (view.ReturnChoice() == "[red]Hard[/]")
+            else if (view.DifficultySelect() == "[red]Hard[/]")
             {
                 return (8, 8);
             }
 
-            else if (view.ReturnChoice() == "Custom")
+            else if (view.DifficultySelect() == "Custom")
             {
                 int r = view.RequestRow();
                 int c = view.RequestColumn();
