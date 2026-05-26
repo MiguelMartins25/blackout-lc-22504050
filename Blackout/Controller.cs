@@ -1,42 +1,40 @@
 using System;
 using System.Xml.Serialization;
+using Microsoft.VisualBasic;
 using Spectre.Console;
+using static Blackout.View;
 
 namespace Blackout
 {
     public class Controller
     {
-        private string choice;
-        public string Choice
+        readonly View view = new View();
+        public (int, int) GridBuilder()
         {
-            get {return Choice; } 
-            set {choice = Choice; }
-        }
-
-        public int GridBuilder(int rows, int columns)
-        {
-            int RowsNum = rows;
-            int ColumnsNum = columns;
-
-            if (Choice == "[green]Easy[/]")
+            if (view.ReturnChoice() == "[green]Easy[/]")
             {
-                
+                return (3, 3); 
             }
 
-            else if (Choice == "[yellow]Medium[/]")
+            else if (view.ReturnChoice() == "[yellow]Medium[/]")
             {
-                    
+                return (5, 5);
             }
 
-            else if (Choice == "[red]Hard[/]")
+            else if (view.ReturnChoice() == "[red]Hard[/]")
             {
-                    
+                return (8, 8);
             }
 
-            else if (choice == "Custom")
+            else if (view.ReturnChoice() == "Custom")
             {
-                    
+                int r = view.RequestRow();
+                int c = view.RequestColumn();
+                return (r, c);
             }
-        }
+
+            var (rows, columns) = GridBuilder();
+            return (rows, columns);
+        } 
     }
 }
