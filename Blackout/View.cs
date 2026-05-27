@@ -115,9 +115,6 @@ namespace Blackout
             AnsiConsole.MarkupLine("\n[green]Complete![/]");
         }
 
-<<<<<<< HEAD
-        public void GridDraw(bool[,] size)
-=======
         /// <summary>
         /// Método que constroi a grid para o jogo.
         /// </summary>
@@ -134,7 +131,6 @@ namespace Blackout
         /// saber como "desenhar" grids
         /// </remarks>
         public bool GridDraw(bool[,] size)
->>>>>>> ce325ae0d23bdb22654492b37f3f6581f5eeb643
         {
             int length = size.GetLength(0); // IA para saber como ler valores
             int width = size.GetLength(1); // das grids
