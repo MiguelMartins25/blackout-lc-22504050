@@ -1,5 +1,6 @@
 using System;
 using System.Collections.Generic;
+using System.ComponentModel.DataAnnotations;
 using System.Globalization;
 using System.Security.Cryptography.X509Certificates;
 using System.Threading;
@@ -68,6 +69,31 @@ namespace Blackout
                 });
 
             AnsiConsole.MarkupLine("[green]Complete![/]");
+        }
+
+        public bool GridDraw(bool[,] size)
+        {
+            int length = size.GetLength(0); // IA para saber como ler valores
+            int width = size.GetLength(1); // das grids
+
+            Console.OutputEncoding = System.Text.Encoding.UTF8;
+            string blank = "\u2B1C";
+            string cell = char.ConvertFromUtf32(0x1F7E9);
+
+            Console.WriteLine();
+
+            // IA usado para saber como "desenhar" grids
+            for (int x = 0; x < length; x++)
+            {
+                for (int y = 0; y < width; y++)
+                {
+                        Console.Write(blank + " ");
+                }
+
+                Console.WriteLine();
+            }
+
+            return size[0,0];
         }
     }
 }
