@@ -10,11 +10,15 @@
 -Código principal em View.cs
 
 -Código principal em Controller.cs
+
+-Setup Git
 #### Miguel Martins - a22504050
 
 -Documentação XML em todos os ficheiros
 
 -Documentação no README.md
+
+-Implemented Gitignore
 
 ---
 ### Repositório Git: https://github.com/whamslambamsam/Projeto-Final-LP1
@@ -23,13 +27,29 @@
 
 O projeto usa arquitetura baseada no modelo MVC(Model-View-Controller).
 
-Program -> Controla o fluxo principal da projeto: cria os objetos, pede a dificuldade, gera a grid e desenha a interface.
+Program -> Controla o fluxo principal da projeto, inicializa os objetos, liga os componentes MVC, mantem o loop principal do jogo, seleção de dificuldade, criação da grid, atualização da interface e verificação de vitória.
 
 Model -> Responsável pelos dados do projeto: criação da matriz bidimensional e armazenamento lógico da grid.
 
-View -> Responsável pela interação com o utilizador: menus, inputs, output visual, desenho da grid e animações de loading
+View -> Responsável pela interação com o utilizador: menus, inputs, output visual, desenho da grid, o cursor e animações de loading.
 
-Controller -> Responsável pela lógica de decisão: interpreta a dificuldade escolhida, define dimensões da grid e faz a ligação entre View e Model.
+Controller -> Responsável pela lógica de decisão: interpreta a dificuldade, movimentação do cursor, ativação/desativação de células, randomização inicial, validação de vitória, processamento de inputs e faz a ligação entre View e Model.
+
+    Fluxo da Aplicação
+
+    Utilizador
+
+    ↓
+
+    View
+
+    ↓
+
+    Controller
+
+    ↓
+
+    Model
 
 #### Algoritmos:
 
@@ -59,6 +79,22 @@ Desenho da grid: em GridDraw no View.cs
                 Console.WriteLine();
             }
 
+Randomização de Células: em SquareSort no Controller.cs
+
+    Random rng = new Random();
+
+    int randCellX = rng.Next(length);
+    int randCellY = rng.Next(width);
+
+Algoritmo de Toggle: em Toggle e FlipCell no Controller.cs
+
+        void Toggle(bool[,] grid, int x, int y)
+        {
+            grid[x, y] = !grid[x, y];
+        }
+
+
+
 ---
 ### Diagrama UML de Classes
 
@@ -66,23 +102,31 @@ Desenho da grid: em GridDraw no View.cs
 classDiagram
 
 class Program {
-    +Main(string[] args) void
+    -Main(string[] args) void
 }
 
 class View {
     +DifficultySelect() string
     +RequestRow() int
     +RequestColumn() int
+    +RequestTouch() int
     +Load(int rows, int columns) void
-    +GridDraw(bool[,] size) bool
-}
-
-class Controller {
-    +GridBuilder(string choice, View view) (int, int)
+    +GridDraw(bool[,] size, (int,int) cursor) void
 }
 
 class Model {
     +GridSize(int length, int width) bool[,]
+}
+
+class Controller {
+    +GridBuilder(string choice, View view) (int,int)
+    +DifficultyTouch(string choice, View view) int
+    +SquareAssort(bool[,] size, int touches) void
+    +InitialPos(bool[,] size) (int,int)
+    -Toggle(bool[,] grid, int x, int y) void
+    +FlipCell(bool[,] size, (int,int) cursor) void
+    +HandleInput(bool[,] size, (int,int) cursor) (int,int)
+    +CheckWin(bool[,] size) bool
 }
 
 Program --> View : uses
@@ -90,6 +134,7 @@ Program --> Controller : uses
 Program --> Model : uses
 
 Controller --> View : interacts
+Controller --> Model : manipulates
 ```
 ---
 ### Referências e bibliotecas utilizadas
