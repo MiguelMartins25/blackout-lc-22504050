@@ -21,11 +21,6 @@ namespace Blackout
         /// <returns>
         /// The grid's template.
         /// </returns>
-        /// <remarks>
-        /// Foi usado AI para perceber como é que poderi-se fazer as grids.
-        /// (Estes remarks são para depois ser apagados e em vez postos no
-        /// relatório, apenas escrevi no código para não se esqueçer)
-        /// </remarks>
         public bool[,] GridSize(int length, int width)
         {
             bool[,] grid = new bool[length, width];

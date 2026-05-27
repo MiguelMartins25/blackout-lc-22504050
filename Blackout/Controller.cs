@@ -23,11 +23,6 @@ namespace Blackout
         /// If the user's choice is "Custom", calls methods that ask for further
         /// inputs.
         /// </returns>
-        /// <remarks>
-        /// Foi usado AI para dar debug e concertar um erro com looping de inputs
-        /// A lógica e concepção foi feita por nós, apenas foi usado Inteligência
-        /// Artificial para evitar o erro.
-        /// </remarks>
         public (int, int) GridBuilder(string choice, View view)
         {
             return choice switch
@@ -39,6 +34,18 @@ namespace Blackout
             };
         }
 
+        /// <summary>
+        /// Method for the player's choice of gamemode.
+        /// </summary>
+        /// <param name="choice">
+        /// The choice the player makes.
+        /// </param>
+        /// <param name="view">
+        /// Calls for the View.cs code.
+        /// </param>
+        /// <returns>
+        /// Returns the gamemode the player choose.
+        /// </returns>
         public int DifficultyTouch(string choice, View view)
         {
             return choice switch
@@ -50,6 +57,15 @@ namespace Blackout
             };
         }
 
+        /// <summary>
+        /// Method that randomizes, depending on grid size, which cell are activated before the start of the game.
+        /// </summary>
+        /// <param name="size">
+        /// Since the lenght and width are the same, size can be used to get the number of both.
+        /// </param>
+        /// <param name="touches">
+        /// The amount of cells ativated before te start of the game.
+        /// </param>
         public void SquareAssort(bool[,] size, int touches)
         {
             Random rng = new Random();
@@ -83,6 +99,15 @@ namespace Blackout
             }
         }
 
+        /// <summary>
+        /// Method for the initial position of the cursor.
+        /// </summary>
+        /// <param name="size">
+        /// The number of collums and rows in the grid.
+        /// </param>
+        /// <returns>
+        /// Returns the initial position for the cursor in the grid.
+        /// </returns>
         public (int, int) InitialPos(bool[,] size)
         {
             int inputX = size.GetLength(0) / 2;
@@ -91,12 +116,32 @@ namespace Blackout
             return (inputX, inputY);
         }
 
-        // IA vvv
+        /// <summary>
+        /// Method to deativated cells.
+        /// </summary>
+        /// <param name="grid">
+        /// Grid size.
+        /// </param>
+        /// <param name="x">
+        /// The row.
+        /// </param>
+        /// <param name="y">
+        /// The collum.
+        /// </param>
         void Toggle(bool[,] grid, int x, int y)
         {
             grid[x, y] = !grid[x, y];
         }
 
+        /// <summary>
+        /// Method that deativates the cells based on location.
+        /// </summary>
+        /// <param name="size">
+        /// Grid size.
+        /// </param>
+        /// <param name="cursor">
+        /// In which cell the cursor is present.
+        /// </param>
         public void FlipCell(bool[,] size, (int, int) cursor)
         {
             int length = size.GetLength(0);
@@ -128,6 +173,18 @@ namespace Blackout
             }
         }
 
+        /// <summary>
+        /// Method that verefies when user inputs to deactivate cells.
+        /// </summary>
+        /// <param name="size">
+        /// Grid size.
+        /// </param>
+        /// <param name="cursor">
+        /// Cursor position.
+        /// </param>
+        /// <returns>
+        /// Returns the location of the cursor when the user inputs.
+        /// </returns>
         public (int, int) HandleInput(bool[,] size, (int, int) cursor)
         {
             int cursorX = cursor.Item1;
@@ -164,6 +221,15 @@ namespace Blackout
             return (cursorX, cursorY);
         }
 
+        /// <summary>
+        /// Method that checks for if the grid has been cleared.
+        /// </summary>
+        /// <param name="size">
+        /// Grid size.
+        /// </param>
+        /// <returns>
+        /// Returns false during the game, and true when the objective has been met.
+        /// </returns>
         public bool CheckWin(bool[,] size)
         {
             int length = size.GetLength(0);

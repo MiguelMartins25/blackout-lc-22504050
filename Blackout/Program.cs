@@ -29,8 +29,6 @@ namespace Blackout
             (int, int) cursor = control.InitialPos(dimensions);
             control.SquareAssort(dimensions, touch);
 
-            // While loop e HandleInput foram debugged com 
-            // ajuda de IA
             while(running == true)
             {
                 Console.Clear();
