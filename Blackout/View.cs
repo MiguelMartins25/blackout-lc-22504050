@@ -13,7 +13,7 @@ namespace Blackout
     {
         public string DifficultySelect()
         {
-            var table = new Table();
+            Table table = new Table();
                 table.AddColumn("Difficulty");
                 table.AddColumn("Size");
                 table.AddRow("[green]Easy[/]", "3 x 3");
@@ -22,7 +22,7 @@ namespace Blackout
                 table.AddRow("Custom", $"? x ?");
             AnsiConsole.Write(table);
 
-            var choice = AnsiConsole.Prompt(
+            string choice = AnsiConsole.Prompt(
                 new SelectionPrompt<string>()
                     .Title("\n[blue]Select difficulty:[/] ")
                     .AddChoices("[green]Easy[/]", 
@@ -39,18 +39,12 @@ namespace Blackout
 
         public int RequestRow()
         {
-            var rowNum = AnsiConsole.Ask<int>("Number of [blue]rows[/]?");
-            int row = rowNum;
-
-            return row;
+            return AnsiConsole.Ask<int>("Number of [blue]rows[/]?");
         }
 
         public int RequestColumn()
         {
-            var columnNum = AnsiConsole.Ask<int>("Number of [red]columns[/]?");
-            int column = columnNum;
-            
-            return column;
+            return AnsiConsole.Ask<int>("Number of [red]columns[/]?");
         }
 
         public void Load(int rows, int columns)
