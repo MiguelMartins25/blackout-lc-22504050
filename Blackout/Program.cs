@@ -9,11 +9,14 @@ namespace Blackout
         {
             View viewer = new View();
             Controller control = new Controller();
+            Model model = new Model();
 
             var choice = viewer.DifficultySelect();
             var (rows, cols) = control.GridBuilder(choice, viewer);
 
             viewer.Load(rows, cols);
+            var dimensions = model.GridSize(rows, cols);
+            viewer.GridDraw(dimensions);
         }
     }
 }
