@@ -133,6 +133,9 @@ namespace Blackout
             int cursorX = cursor.Item1;
             int cursorY = cursor.Item2;
 
+            cursorX = Math.Clamp(cursorX, 0, size.GetLength(0) - 1);
+            cursorY = Math.Clamp(cursorY, 0, size.GetLength(1) - 1);
+
             var key = Console.ReadKey(true).Key;
 
             switch (key)
