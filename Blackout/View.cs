@@ -13,11 +13,12 @@ namespace Blackout
     public class View
     {
         /// <summary>
-        /// Método para mostrar ao jogador as escolhas de dificuldades para jogar,
-        /// deixando-o selecionar a que deseja.
+        /// Method that generates a table with Spectre.Console, displaying the
+        /// difficulty options and allowing the user to choose with an interactive
+        /// UI, also using Spectre.Console.
         /// </summary>
         /// <returns>
-        /// Retorna a escolha do jogador.
+        /// The user's choice.
         /// </returns>
         public string DifficultySelect()
         {
@@ -46,7 +47,8 @@ namespace Blackout
         }
 
         /// <returns>
-        /// Retorna o numero de linhas.
+        /// Returns the custom value of rows. Only called if user inputs the
+        /// custom difficulty.
         /// </returns>
         public int RequestRow()
         {
@@ -61,7 +63,8 @@ namespace Blackout
         }
 
         /// <returns>
-        /// Retorna o numero de colunas.
+        /// Returns the custom value of columns. Only called if user inputs the
+        /// custom difficulty.
         /// </returns>
         public int RequestColumn()
         {
@@ -88,14 +91,16 @@ namespace Blackout
         }
 
         /// <summary>
-        /// Método que mostra ao jogador a grid que selecionou
-        /// a ser criada em tempo real.
+        /// Method that fakes a loading section.
+        /// It's used to give the illusion to the user for the sake of aesthetic,
+        /// but also give feedback - allowing the user to be reminded of how many
+        /// rows and columns have been selected.
         /// </summary>
         /// <param name="rows">
-        /// Numero de linhas.
+        /// The number of rows.
         /// </param>
         /// <param name="columns">
-        /// Numero de colunas.
+        /// The number of columns.
         /// </param>
         public void Load(int rows, int columns)
         {
@@ -116,14 +121,14 @@ namespace Blackout
         }
 
         /// <summary>
-        /// Método que constroi a grid para o jogo.
+        /// Draws the grid with squares.
         /// </summary>
         /// <param name="size">
-        /// Como o numero de colunas e linhas são o mesmo,
-        /// size é usado para obter ambos.
+        /// Bool that contains the dimensions,
+        /// first value is the rows and the second's the columns.
         /// </param>
         /// <returns>
-        /// Retorna o tamanho da grid
+        /// The full grid display.
         /// </returns>
         /// <remarks>
         /// Ai usado para:

@@ -6,8 +6,9 @@ namespace Blackout
     public class Program
     {
         /// <summary>
-        /// O Main reune cada class da abordagem MVC,
-        /// partilhando variáveis usadas em diferentes métodos.
+        /// Groups up each class from the MVC format,
+        /// sharing their variables between one another and calling methods
+        /// in sequence.
         /// </summary>
         private static void Main(string[] args)
         {

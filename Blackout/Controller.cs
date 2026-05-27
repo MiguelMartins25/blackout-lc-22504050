@@ -9,17 +9,19 @@ namespace Blackout
     public class Controller
     {
         /// <summary>
-        /// Determina as dimensões da grelha com base
-        /// na dificuldade selecionada pelo utilizador.
+        /// Determines the size of the grid based on
+        /// the user's choice given on View's DifficultySelect().
         /// </summary>
         /// <param name="choice">
-        /// Dificuldade escolhida pelo utilizador.
+        /// Argument that uses the user's choice.
         /// </param>
         /// <param name="view">
-        /// Instância responsável pela interação com o utilizador.
+        /// Argument that calls a variable of the View class.
         /// </param>
         /// <returns>
-        /// Um tuplo contendo o número de linhas e colunas da grelha.
+        /// A group of two int variables whose value depend on choice's value.
+        /// If the user's choice is "Custom", calls methods that ask for further
+        /// inputs.
         /// </returns>
         /// <remarks>
         /// Foi usado AI para dar debug e concertar um erro com looping de inputs

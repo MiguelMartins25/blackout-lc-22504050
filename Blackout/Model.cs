@@ -10,20 +10,21 @@ namespace Blackout
     public class Model
     {
         /// <summary>
-        /// Metodo usado para criar a grid
-        /// dependendo da dificuldade que o jogador selecionou.
+        /// Method that forms the grid's "blueprint", so to speak.
         /// </summary>
         /// <param name="length">
-        /// Largura total da grid.
+        /// The number of rows
         /// </param>
         /// <param name="width">
-        /// Altura total da grid.
+        /// The number of columns
         /// </param>
         /// <returns>
-        /// As dimenções da grid criada para o jogador.
+        /// The grid's template.
         /// </returns>
         /// <remarks>
         /// Foi usado AI para perceber como é que poderi-se fazer as grids.
+        /// (Estes remarks são para depois ser apagados e em vez postos no
+        /// relatório, apenas escrevi no código para não se esqueçer)
         /// </remarks>
         public bool[,] GridSize(int length, int width)
         {
