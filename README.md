@@ -12,6 +12,8 @@
 -Código principal em Controller.cs
 
 -Setup Git
+
+-Implemented Gitatributes
 #### Miguel Martins - a22504050
 
 -Documentação XML em todos os ficheiros
