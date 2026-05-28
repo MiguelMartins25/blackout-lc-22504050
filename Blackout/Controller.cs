@@ -204,7 +204,7 @@ namespace Blackout
         /// <returns>
         /// Returns the location of the cursor when the user inputs.
         /// </returns>
-        public (int, int) HandleInput(bool[,] size, (int, int) cursor)
+        public (int, int) HandleInput(bool[,] size, (int, int) cursor, Model model)
         {
             int cursorX = cursor.Item1;
             int cursorY = cursor.Item2;
@@ -231,7 +231,7 @@ namespace Blackout
                 
                 case ConsoleKey.Enter:
                     FlipCell(size, cursor);
-                    MoveCount++;
+                    model.Moves++;
                     break;
             }
             
@@ -268,6 +268,18 @@ namespace Blackout
             }
 
             return true;
+        }
+
+        public void UpdateHighScore(Model model, string difficulty)
+        {
+            if (!model.HighScores.ContainsKey(difficulty))
+            {
+                model.HighScores[difficulty] = model.Moves;
+            }
+            else if (model.Moves < model.HighScores[difficulty])
+            {
+                model.HighScores[difficulty] = model.Moves;
+            }
         }
     }
 }

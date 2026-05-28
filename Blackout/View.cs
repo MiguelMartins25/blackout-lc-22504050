@@ -164,5 +164,21 @@ namespace Blackout
                 Console.WriteLine();
             }
         }
+
+        public void DisplayScores(Model model, string difficulty)
+{
+            AnsiConsole.MarkupLine($"[green]Moves:[/] {model.Moves}");
+
+            if (model.HighScores.ContainsKey(difficulty))
+            {
+                AnsiConsole.MarkupLine(
+                    $"[yellow]Highscore:[/] {model.HighScores[difficulty]}"
+                );
+            }
+            else
+            {
+                AnsiConsole.MarkupLine("[yellow]Highscore:[/] None");
+            }
+        }
     }
 }
