@@ -10,17 +10,14 @@ namespace Blackout
     public class Model
     {
         public bool[,] Grid { get; set; }
-
         public int Moves { get; set; }
-
         public Dictionary<string, int> HighScores { get; set; }
-
         public Model()
         {
             Moves = 0;
-
             HighScores = new Dictionary<string, int>();
         }
+        HighScoreManager highScoreManager = new HighScoreManager();
         /// <summary>
         /// Method that forms the grid's "blueprint", so to speak.
         /// </summary>
@@ -41,7 +38,5 @@ namespace Blackout
 
             return Grid;
         }
-    }
-}
     }
 }

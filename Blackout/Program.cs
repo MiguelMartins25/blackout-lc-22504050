@@ -45,7 +45,7 @@ namespace Blackout
                 viewer.GridDraw(dimensions, cursor);
                 AnsiConsole.MarkupLine("[blue]------------------------------------[/]");
 
-                AnsiConsole.MarkupLine($"Current score in {choice}:");
+                viewer.DisplayScores(model, choice);
 
                 if (control.CheckWin(dimensions) == true)
                 {
@@ -53,7 +53,7 @@ namespace Blackout
                     running = false;
                 }
 
-                cursor = control.HandleInput(dimensions, cursor); // Grid only updates after
+                cursor = control.HandleInput(dimensions, cursor, model); // Grid only updates after
                                                                   // input!
             }
         }
