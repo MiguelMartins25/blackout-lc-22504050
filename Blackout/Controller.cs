@@ -8,6 +8,7 @@ namespace Blackout
 {
     public class Controller
     {
+        public int MoveCount { get; private set; } = 0;
         /// <summary>
         /// Determines the size of the grid based on
         /// the user's choice given on View's DifficultySelect().
@@ -31,6 +32,7 @@ namespace Blackout
                 "[yellow]Medium[/]" => (5, 5),
                 "[red]Hard[/]" => (8, 8),
                 "Custom" => (view.RequestRow(), view.RequestColumn()),
+                _ => (5, 5)
             };
         }
 
@@ -54,6 +56,7 @@ namespace Blackout
                 "[yellow]Medium[/]" => 4,
                 "[red]Hard[/]" => 10,
                 "Custom" => view.RequestTouch(),
+                _ => 4
             };
         }
 
@@ -206,7 +209,7 @@ namespace Blackout
             int cursorX = cursor.Item1;
             int cursorY = cursor.Item2;
 
-            var key = Console.ReadKey(true).Key;
+            ConsoleKey key = Console.ReadKey(true).Key;
 
             switch (key)
             {
@@ -228,6 +231,7 @@ namespace Blackout
                 
                 case ConsoleKey.Enter:
                     FlipCell(size, cursor);
+                    MoveCount++;
                     break;
             }
             
@@ -235,6 +239,7 @@ namespace Blackout
             cursorY = Math.Clamp(cursorY, 0, size.GetLength(1) - 1);
 
             return (cursorX, cursorY);
+            
         }
 
         /// <summary>

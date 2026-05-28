@@ -45,6 +45,8 @@ namespace Blackout
                 viewer.GridDraw(dimensions, cursor);
                 AnsiConsole.MarkupLine("[blue]------------------------------------[/]");
 
+                AnsiConsole.MarkupLine($"Current score in {choice}:");
+
                 if (control.CheckWin(dimensions) == true)
                 {
                     AnsiConsole.MarkupLine("\n[green]You won![/] - Press a key to leave.");
