@@ -17,6 +17,7 @@ namespace Blackout
             View viewer = new View();
             Controller control = new Controller();
             Model model = new Model();
+            HighScoreManager highScoreManager = new HighScoreManager();
 
             Console.WriteLine();
             
@@ -28,6 +29,7 @@ namespace Blackout
             bool[,] dimensions = model.GridSize(rows, cols);
             (int, int) cursor = control.InitialPos(dimensions);
             control.SquareAssort(dimensions, touch);
+            model.HighScores = highScoreManager.LoadScores();
 
             while(running == true)
             {
@@ -47,9 +49,12 @@ namespace Blackout
 
                 viewer.DisplayScores(model, choice);
 
-                if (control.CheckWin(dimensions) == true)
+                if (control.CheckWin(dimensions))
                 {
-                    AnsiConsole.MarkupLine("\n[green]You won![/] - Press a key to leave.");
+                    control.UpdateHighScore(model, choice);
+                    highScoreManager.SaveScores(model.HighScores);
+                    AnsiConsole.MarkupLine($"\n[green]You won in {model.Moves} moves![/]");
+                    Console.ReadKey();
                     running = false;
                 }
 
