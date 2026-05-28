@@ -134,7 +134,7 @@ namespace Blackout
         }
 
         /// <summary>
-        /// Method that deativates the cells based on location.
+        /// Method that deativates the cells on the cursor and its 8 "neighbours" around it, based on location.
         /// </summary>
         /// <param name="size">
         /// Grid size.
@@ -152,31 +152,41 @@ namespace Blackout
 
             Toggle(size, cursorX, cursorY);
 
-            if (cursorX > 0) 
-            {
+            // Up
+            if (cursorX > 0)
                 Toggle(size, cursorX - 1, cursorY);
-            }
 
-            if (cursorX < length - 1) 
-            {
+            // Down
+            if (cursorX < length - 1)
                 Toggle(size, cursorX + 1, cursorY);
-            }
 
+            // Left
             if (cursorY > 0)
             {
                 Toggle(size, cursorX, cursorY - 1);
-                Toggle(size, cursorX - 1, cursorY - 1);
-                Toggle(size, cursorX + 1, cursorY - 1);
+
+                // Top-left
+                if (cursorX > 0)
+                    Toggle(size, cursorX - 1, cursorY - 1);
+
+                // Bottom-left
+                if (cursorX < length - 1)
+                    Toggle(size, cursorX + 1, cursorY - 1);
             }
 
+            // Right
             if (cursorY < width - 1)
-            { 
+            {
                 Toggle(size, cursorX, cursorY + 1);
-                Toggle(size, cursorX - 1, cursorY + 1);
-                Toggle(size, cursorX + 1, cursorY + 1);
-            }
 
-            
+                // Top-right
+                if (cursorX > 0)
+                    Toggle(size, cursorX - 1, cursorY + 1);
+
+                // Bottom-right
+                if (cursorX < length - 1)
+                    Toggle(size, cursorX + 1, cursorY + 1);
+            }
         }
 
         /// <summary>
@@ -256,3 +266,4 @@ namespace Blackout
         }
     }
 }
+
