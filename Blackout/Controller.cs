@@ -165,12 +165,18 @@ namespace Blackout
             if (cursorY > 0)
             {
                 Toggle(size, cursorX, cursorY - 1);
+                Toggle(size, cursorX - 1, cursorY - 1);
+                Toggle(size, cursorX + 1, cursorY - 1);
             }
 
             if (cursorY < width - 1)
             { 
                 Toggle(size, cursorX, cursorY + 1);
+                Toggle(size, cursorX - 1, cursorY + 1);
+                Toggle(size, cursorX + 1, cursorY + 1);
             }
+
+            
         }
 
         /// <summary>
