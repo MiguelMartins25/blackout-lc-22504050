@@ -9,6 +9,18 @@ namespace Blackout
 {
     public class Model
     {
+        public bool[,] Grid { get; set; }
+
+        public int Moves { get; set; }
+
+        public Dictionary<string, int> HighScores { get; set; }
+
+        public Model()
+        {
+            Moves = 0;
+
+            HighScores = new Dictionary<string, int>();
+        }
         /// <summary>
         /// Method that forms the grid's "blueprint", so to speak.
         /// </summary>
@@ -21,10 +33,15 @@ namespace Blackout
         /// <returns>
         /// The grid's template.
         /// </returns>
-        public bool[,] GridSize(int length, int width)
+
+
+        public bool[,] GridSize(int rows, int cols)
         {
-            bool[,] grid = new bool[length, width];
-            return grid;
+            Grid = new bool[rows, cols];
+
+            return Grid;
         }
+    }
+}
     }
 }
