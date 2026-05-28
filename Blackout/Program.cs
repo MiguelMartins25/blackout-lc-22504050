@@ -10,6 +10,7 @@ namespace Blackout
         /// Groups up each class from the MVC format,
         /// sharing their variables between one another and calling methods
         /// in sequence.
+        /// Displays everything for the player.
         /// </summary>
         private static void Main(string[] args)
         {

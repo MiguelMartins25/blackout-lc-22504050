@@ -164,7 +164,15 @@ namespace Blackout
                 Console.WriteLine();
             }
         }
-
+        /// <summary>
+        /// Displays highscores.
+        /// </summary>
+        /// <param name="model">
+        /// Model.cs
+        /// </param>
+        /// <param name="difficulty">
+        /// Dificulty choosen.
+        /// </param>
         public void DisplayScores(Model model, string difficulty)
 {
             AnsiConsole.MarkupLine($"[green]Moves:[/] {model.Moves}");

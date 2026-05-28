@@ -30,8 +30,6 @@ namespace Blackout
         /// <returns>
         /// The grid's template.
         /// </returns>
-
-
         public bool[,] GridSize(int rows, int cols)
         {
             Grid = new bool[rows, cols];

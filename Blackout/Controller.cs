@@ -270,6 +270,15 @@ namespace Blackout
             return true;
         }
 
+        /// <summary>
+        /// Method that updates the Highscore.
+        /// </summary>
+        /// <param name="model">
+        /// Model.cs
+        /// </param>
+        /// <param name="difficulty">
+        /// Dificulty choosen.
+        /// </param>
         public void UpdateHighScore(Model model, string difficulty)
         {
             if (!model.HighScores.ContainsKey(difficulty))
